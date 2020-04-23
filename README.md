@@ -1,3 +1,67 @@
+#git tagging/versions/release
+
+1) how to push a master as tag - to make version
+after development of version 'x'
+
+create tag /version/release
+git tag v1.1
+git push origin v1.1
+
+
+
+
+
+2) developer if they have work on current or previous version , 
+how to checkout the tag into local brnach and do development and push to the same tag.
+
+git pull - will get the all tags
+
+2.1) Checkout the tag (a Detached HEAD)
+
+git checkout tag/v1.1
+
+2.2) Create and Checkout a branch off that tag (i.e. Branching off the tag)
+
+git checkout -b my-tagged-branch
+
+*** do work and commit changes ***
+
+2.3) Push to the remote branch.
+
+git push  -u origin my-tagged-branch
+
+If needed merge branch into other branches that need the change (in case of a bug fix for example)
+
+2.4) While still on my-tagged-branch, Delete the tag
+
+git tag -d v1.1
+
+2.5) Create the tag again: This will "move" the tag to point to your latest commit on that branch
+
+git tag v1.1
+
+2.6) Delete the tag on remote
+
+git push origin :v1.1
+
+2.7) Create the tag on remote
+
+git push origin v1.1
+
+
+2.8) delete tag on local
+git tag -d v1.1
+
+2.9) Delete the tag on remote
+git push origin :v1.1
+
+
+2.10) point the latest commit to the tag
+git push origin v1.1
+
+
+
+
 # Monorepo sample
 This repo showcases how one could structure and build monorepos with either Apache Maven or Bazel.
 
